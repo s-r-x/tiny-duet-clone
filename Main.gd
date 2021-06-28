@@ -11,4 +11,3 @@ func play():
 	player.stop_rotation()
 	yield(player, "ready_to_play")
 	player.controlled = true;
-	player.moving = true

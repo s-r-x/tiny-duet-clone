@@ -1,7 +1,6 @@
 extends Node2D
 
 export var controlled: bool = false
-export var moving: bool = false
 export var rot_speed = 5
 signal ready_to_play
 
@@ -25,8 +24,6 @@ func stop_rotation():
 
 
 func _process(delta):
-	if moving:
-		position.y = position.y - 5
 	if !controlled:
 		return
 	if Input.is_action_pressed("ui_right"):

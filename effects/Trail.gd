@@ -1,6 +1,7 @@
 extends Line2D
 
 onready var parent = get_parent()
+export var y_speed = 125
 var is_enabled = false
 const MAX_POINTS = 25
 func _ready():
@@ -13,9 +14,15 @@ func enable():
 func _process(_delta):
 	if !is_enabled:
 		return
-	global_position = 	Vector2(0,0)
-	add_point(parent.global_position)
-	if(self.points.size() >= MAX_POINTS):
+	global_position = Vector2(0,0)
+	var pos = parent.global_position
+	add_point(Vector2(pos.x, pos.y + -10))
+	var size = get_point_count()
+	for idx in range(size):
+		if(idx == 0):
+			continue
+		var p = points[idx]
+		points[idx] = Vector2(p.x, p.y + idx * 0.5)
+	if(size >= MAX_POINTS):
 		remove_point(0)
-
 
