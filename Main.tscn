@@ -231,6 +231,10 @@ tracks/2/keys = {
 [node name="Main" type="Node"]
 script = ExtResource( 4 )
 
+[node name="Theme" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 3 )
+
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -239,13 +243,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Theme" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
-
 [node name="Player" type="Node2D" parent="."]
 position = Vector2( 360, 360 )
 script = ExtResource( 7 )
-rot_speed = 0.05
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
 
 [node name="Rail" type="Sprite" parent="Player"]
 modulate = Color( 1, 1, 1, 0 )
@@ -399,4 +402,4 @@ __meta__ = {
 
 [connection signal="timeout" from="Credits/CreditsTimer" to="." method="_on_CreditsTimer_timeout"]
 [connection signal="animation_finished" from="Credits/CreditsAnimation" to="Credits" method="_on_CreditsAnimation_animation_finished"]
-[connection signal="pressed" from="PlayBtn" to="Player" method="stop_rotation"]
+[connection signal="pressed" from="PlayBtn" to="." method="play"]
