@@ -26,7 +26,7 @@ func stop_rotation():
 
 func _process(delta):
 	if moving:
-		position.y = position.y - 5
+		position.y = position.y - 3
 	if !controlled:
 		return
 	if Input.is_action_pressed("ui_right"):
